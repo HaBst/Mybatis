@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "student">
+	<insert id = "test1">
+	insert into student values(seq_student.nextval,'김말똥','01099998888','mal@kh.org','경기도 부천시',default)
+	</insert>
+	
+	<insert id = "test2">
+	insert into student values(seq_student.nextval,#{studentName},'11122223333','asd@kh.org','서울시 선유로',default)
+	</insert>
+	
+	<insert id = "test3" parameterType="org.kh.student.model.vo.Student">
+	insert into student values(seq_student.nextval,#{studentName},#{studentTel},#{studentEmail},#{studentAddr},default)
+	</insert>
+	
+	<update id = "test4" parameterType="org.kh.student.model.vo.Student">
+	update student set student_name=#{studentName}, student_tel=#{studentTel},
+						student_email=#{studentEmail},student_addr=#{studentAddr}
+						where student_no = #{studentNo}
+	</update>
+	
+	<delete id = "test5">
+	delete from student where student_no=#{studentNo}
+	</delete>
+	
+	<select id = "test6" resultType = "org.kh.student.model.vo.Student">
+	select student_no as studentNo,
+	student_Name as studentName,
+	student_Tel as studentTel,
+	student_Email as studentEmail,
+	student_Addr as studentAddr
+	from student where student_no = #{studentNo}	
+	</select>
+	
+	<select id = "test7" resultType = "org.kh.student.model.vo.Student">
+	select student_no as studentNo,
+	student_Name as studentName,
+	student_Tel as studentTel,
+	student_Email as studentEmail,
+	student_Addr as studentAddr
+	from student
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>동적쿼리 if문 해보기</title>
+</head>
+<body>
+
+<form action = "/memberList" method = "post">
+<input type = "checkbox" name = "chId"/>ID
+<input type = "checkbox" name = "chPw"/>PW
+<input type = "checkbox" name = "chName"/>NAME
+<input type = "checkbox" name = "chAddr"/>ADDR
+<input type = "submit" value = "회원정보 요청"/>
+</form>
+
+<!-- 
+<form action = "/memberList" method = "post">
+<input type = "checkbox" name = "check" value = "id"/>ID
+<input type = "checkbox" name = "check" value = "pw"/>PW
+<input type = "checkbox" name = "check" value = "name"/>NAME
+<input type = "checkbox" name = "check" value = "addr"/>ADDR
+<input type = "submit" value = "회원정보 요청"/>
+</form>
+name값을 같게한다면 서블릿에서는 String의 배열형태로 넘어오기때문에
+request.getParameterValues로 받아와야 한다 -->
+
+</body>
+</html>

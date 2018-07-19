@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+  <select id="checkId" resultType="member" parameterType="member">
+  select member_no as memberNo,
+  		member_id as memberId,
+  		member_pw as memberPw,
+  		member_name as memberName,
+  		member_addr as memberAddr,
+  		gender as gender,
+  		hobby as hobby,
+  		reg_date as regDate
+  		from member
+  		where member_id = #{memberId} and member_pw = #{memberPw}
+  
+  </select>
+  
+  <insert id="insert" parameterType="member">
+  insert into member values(seq_member.nextval,#{memberId},#{memberPw},#{memberName},#{memberAddr},#{gender},#{hobby},default)
+  </insert>
+  
+  <update id="update" parameterType ="member">
+  update member set member_pw = #{memberPw}
+  where member_id = #{memberId}
+  </update>
+  
+  <delete id="delete">
+  delete from member where member_id = #{memberId}
+  </delete>
+  
+  <select id="selectAll" resultType="member">
+  select
+  member_no as memberNo,
+  member_id as memberId,
+  member_name as memberName,
+  member_addr as memberAddr,
+  gender as gender,
+  hobby as hobby,
+  reg_date as regDate
+  from member
+  </select>
+  
+
+  <select id = "searchList" resultType = "member" parameterType="search">
+select
+  member_no as memberNo,
+  member_id as memberId,
+  member_name as memberName,
+  member_addr as memberAddr,
+  gender as gender,
+  hobby as hobby,
+  reg_date as regDate
+  from member
+	<choose>
+		<when test="select.equals('name')">   <!-- value값이 name인가? -->
+			where member_name like '%'||#{keyword}||'%'
+		</when>
+		<when test="select.equals('id')">
+			where member_id like '%'||#{keyword}||'%'
+		</when>
+		<when test ="select.equals('addr')">
+			where member_addr like '%'||#{keyword}||'%'
+		</when>
+	</choose>
+	</select>
+
+
+<select id = "searchCateList" resultType="member">
+	select
+  member_no as memberNo,
+  member_id as memberId,
+  member_name as memberName,
+  member_addr as memberAddr,
+  gender as gender,
+  hobby as hobby,
+  reg_date as regDate
+	from member where member_addr IN
+	<foreach item = "addr" collection = "array" open ="(" separator="," close = ")">
+		#{addr}
+	</foreach>
+	</select>
+
+  
+  
+</mapper>
+
+
+
+
+<!-- 
+ member_no number primary key,
+    member_id varchar2(20) not null,
+    member_pw varchar2(20) not null,
+    member_name varchar2(20) not null,
+    member_addr varchar(50) not null,
+    gender Nchar(1) not null,
+    hobby varchar2(50) not null,
+    reg_date date default sysdate
+     -->

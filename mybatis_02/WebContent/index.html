@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mybatis 실습하기</title>
+</head>
+<body>
+1. 회원 ID를 입력하여 해당 회원이 존재하는지 확인 (ID 검증 용도)<br>
+- 있으면 사용 불가 출력, 없으면 사용 가능 출력 <br>
+<form action = "/mybatisTest1" method = "post"><br>
+ID : <input type = "text" name = "userId"/><br><br>
+<input type = "submit" value = "확인"/><br>
+</form>
+<hr>
+2. 회원 ID,PW를 이용하여 회원 정보 가져오기 <br>
+- ID의 PW가 일치하는 회원에 대하여 정보 가져와서 VIEW Page를 이용하여 출력하기<br>
+- 모든 정보 출력 (EL 사용)
+<form action = "/mybatisTest2" method = "post">
+ID : <input type = "text" name = "userId"/><br>
+PWD : <input type = "text" name = "userPwd"/><br><br>
+<input type = "submit" value = "확인"/><br>
+</form>
+<hr>
+3. 회원 가입 만들어 보기<br>
+- ID,PW,닉네임,전화번호를 입력 받아 insert 처리
+<form action = "/mybatisTest3" method = "post">
+ID : <input type = "text" name = "userId"/><br>
+PWD : <input type = "text" name = "userPwd"/><br>
+닉네임 : <input type = "text" name = "userNick"/><br>
+전화번호 : <input type = "text" name = "userTel"/><br><br>
+<input type = "submit" value = "회원가입"/><br>
+</form>
+<hr>
+4. 회원 정보 수정 하기<br>
+- ID,PW를 넘겨받아 회원 정보를 가져온후<br>
+- 정보 수정후 변경하기 버튼을 클릭시 변경하기 (단, PW,닉네임, 전화번호만 바꿀 수 있음)
+<form action = "/mybatisTest4" method = "post">
+ID : <input type = "text" name = "userId"/><br>
+PWD : <input type = "text" name = "userPwd"/><br><br>
+<input type = "submit" value = "검색"/><br>
+</form>
+<hr>
+5. ID,PW를 입력받아 회원 탈퇴 처리하기
+<form action = "/mybatisTest5" method = "post">
+ID : <input type = "text" name = "userId"/><br>
+PWD : <input type = "text" name = "userPwd"/><br><br>
+<input type = "submit" value = "삭제"/><br>
+</form>
+<hr>
+6. 전체 회원 정보 출력하기<br>
+<a href = "/mybatisTest6">출력</a>
+<hr>
+
+
+
+</body>
+</html>
